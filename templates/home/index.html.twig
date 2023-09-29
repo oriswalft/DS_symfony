@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Bienvenue sur le site de CinéClub</h1>
+
+    {% for films in films %}
+    <li>
+        <h2>{{ films.titre }}</h2>
+        <p>{{ films.descriptionFilm }}</p>
+        <p>{{ films.realisateur }}</p>
+        <sub>{{ films.dateDeSortie|date('d/m/Y') }}</sub>
+        <sub>{{ films.duree|date('H:i') }}</sub>
+        <a href="{{ path('/film/{id}/info' , {'id': films.id})}}" class="btn btn-primary">Consulter</a>
+    </li>
+    {% endfor %}
+</div>
+{% endblock %}
